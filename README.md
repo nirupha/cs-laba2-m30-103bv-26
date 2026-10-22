@@ -2,7 +2,7 @@
 ## Запуск: две команды
 
 ```
-docker build -t lab2 https://github.com/ЗАМЕНИ_НА_ЛОГИН/ЗАМЕНИ_НА_РЕПОЗИТОРИЙ.git
+docker build -t lab2 https://github.com/nirupha/cs-laba2-m30-103bv-26.git
 ```
 
 **2. Запустить программу:**
