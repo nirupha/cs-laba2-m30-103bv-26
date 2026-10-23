@@ -54,20 +54,25 @@ int main()
         cout << "Ошибка: A, B и N должны быть числами." << endl;
         return 1;
     }
-    if (A >= B)
-    {
-        cout << "Ошибка: должно быть A < B." << endl;
-        return 1;
-    }
-    if (N <= 0 || N != floor(N))
-    {
-        cout << "Ошибка: N должно быть целым числом больше 0." << endl;
-        return 1;
-    }
 
-    double h = (B - A) / N;
     cout << fixed << setprecision(6);
-    cout << "Шаг h = (B - A) / N = " << h << endl << endl;
+    double h = 0;
+    if (A == B)
+    {
+        cout << "A = B: отрезок вырождается в точку, вычисляется одно значение."
+             << endl << endl;
+        N = 0;
+    }
+    else
+    {
+        if (N <= 0 || N != floor(N))
+        {
+            cout << "Ошибка: N должно быть целым числом больше 0." << endl;
+            return 1;
+        }
+        h = (B - A) / N;
+        cout << "Шаг h = (B - A) / N = " << h << endl << endl;
+    }
 
     cout << setw(4) << "i" << setw(14) << "x"
          << setw(14) << "F(x)" << setw(16) << "G(x)" << endl;
@@ -75,6 +80,8 @@ int main()
     for (int i = 0; i <= N; i++)
     {
         double x = A + i * h;
+        if (fabs(x) < 5e-7)
+            x = 0;
         double f = F(x);
         if (fabs(f) < 5e-7)
             f = 0;
